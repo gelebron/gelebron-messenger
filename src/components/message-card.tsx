@@ -1,10 +1,9 @@
-import { WalletContext } from '@/providers/WalletContext';
-import React, { useContext } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { WalletContext } from "@/providers/WalletContext";
+import React, { useContext } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface MessageCardProps {
-	  msg: any;
-
+  msg: any;
 }
 
 const MessageCard = ({ msg }: MessageCardProps) => {
@@ -22,7 +21,7 @@ const MessageCard = ({ msg }: MessageCardProps) => {
             transition={{
               opacity: { duration: 0.1 },
               layout: {
-                type: 'spring',
+                type: "spring",
                 bounce: 0.3,
                 duration: 0.2,
               },
@@ -31,10 +30,10 @@ const MessageCard = ({ msg }: MessageCardProps) => {
               originX: 0.5,
               originY: 0.5,
             }}
-            className='flex flex-col gap-2 p-1 whitespace-pre-wrap items-end'
+            className="flex flex-col gap-2 p-1 whitespace-pre-wrap items-end"
           >
-            <div className='flex gap-3 items-center'>
-              <span className='bg-accent p-3 rounded-md max-w-xs'>
+            <div className="flex gap-3 items-center">
+              <span className="bg-accent p-3 rounded-md max-w-xs break-all">
                 {msg.content}
               </span>
             </div>
@@ -50,7 +49,7 @@ const MessageCard = ({ msg }: MessageCardProps) => {
             transition={{
               opacity: { duration: 0.1 },
               layout: {
-                type: 'spring',
+                type: "spring",
                 bounce: 0.3,
                 duration: 0.2,
               },
@@ -59,10 +58,10 @@ const MessageCard = ({ msg }: MessageCardProps) => {
               originX: 0.5,
               originY: 0.5,
             }}
-            className='flex flex-col gap-2 p-1 whitespace-pre-wrap items-start'
+            className="flex flex-col gap-2 p-1 whitespace-pre-wrap items-start"
           >
-            <div className='flex gap-3 items-center'>
-              <span className='bg-accent p-3 rounded-md max-w-xs'>
+            <div className="flex gap-3 items-center">
+              <span className="bg-accent p-3 rounded-md max-w-xs break-all">
                 {msg.content}
               </span>
             </div>

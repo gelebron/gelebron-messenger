@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { WalletContext } from '@/providers/WalletContext';
-import Link from 'next/link';
-import React, { useContext } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { WalletContext } from "@/providers/WalletContext";
+import Link from "next/link";
+import React, { useContext } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface PaymentCardProps {
   msg: {
@@ -25,7 +25,7 @@ const PaymentCard = ({ msg }: PaymentCardProps) => {
             transition={{
               opacity: { duration: 0.1 },
               layout: {
-                type: 'spring',
+                type: "spring",
                 bounce: 0.3,
                 duration: 0.2,
               },
@@ -34,16 +34,16 @@ const PaymentCard = ({ msg }: PaymentCardProps) => {
               originX: 0.5,
               originY: 0.5,
             }}
-            className='flex flex-col gap-2 p-1 whitespace-pre-wrap items-start'
+            className="flex flex-col gap-2 p-1 whitespace-pre-wrap items-start"
           >
-            <div className='flex gap-3 items-center'>
-              <span className='bg-accent p-3 rounded-md max-w-xs'>
+            <div className="flex gap-3 items-center">
+              <span className="bg-accent p-3 rounded-md break-all max-w-xs">
                 {msg.content && (
                   <>
                     <Link
-                      className='text-blue-600 underline text-wrap'
-                      href={msg.content.split(' ')[3]}
-                      target='_blank'
+                      className="text-blue-600 underline text-wrap"
+                      href={msg.content.split(" ")[3]}
+                      target="_blank"
                     >
                       {msg.content}
                     </Link>
@@ -63,7 +63,7 @@ const PaymentCard = ({ msg }: PaymentCardProps) => {
             transition={{
               opacity: { duration: 0.1 },
               layout: {
-                type: 'spring',
+                type: "spring",
                 bounce: 0.3,
                 duration: 0.2,
               },
@@ -72,16 +72,16 @@ const PaymentCard = ({ msg }: PaymentCardProps) => {
               originX: 0.5,
               originY: 0.5,
             }}
-            className='flex flex-col gap-2 p-1 whitespace-pre-wrap items-end'
+            className="flex flex-col gap-2 p-1 whitespace-pre-wrap items-end"
           >
-            <div className='flex gap-3 items-center'>
-              <span className='bg-accent p-3 rounded-md max-w-xs'>
+            <div className="flex gap-3 items-center">
+              <span className="bg-accent p-3 rounded-md max-w-xs">
                 {msg.content && (
                   <>
                     <Link
-                      className='text-blue-600 underline'
-                      href={msg.content.split(' ')[3]}
-                      target='_blank'
+                      className="text-blue-600 underline"
+                      href={msg.content.split(" ")[3]}
+                      target="_blank"
                     >
                       {msg.content}
                     </Link>
