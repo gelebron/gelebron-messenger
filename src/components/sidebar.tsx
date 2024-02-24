@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { MoreHorizontal, SquarePen } from 'lucide-react';
-import { cn, getLatestMessage, shortAddress } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { MoreHorizontal, SquarePen } from "lucide-react";
+import { cn, getLatestMessage, shortAddress } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
-} from '@/components/ui/tooltip';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { useContext, useState } from 'react';
-import { XmtpContext } from '@/providers/XmtpContext';
-import ConversationList from './conversation-list';
-import { WalletContext } from '@/providers/WalletContext';
-import ConversationListIdenticon from './conversation-list-identicon';
-import SearchAddress from './search-address';
+} from "@/components/ui/tooltip";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useContext, useState } from "react";
+import { XmtpContext } from "@/providers/XmtpContext";
+import ConversationList from "./conversation-list";
+import { WalletContext } from "@/providers/WalletContext";
+import ConversationListIdenticon from "./conversation-list-identicon";
+import SearchAddress from "./search-address";
 
 interface SidebarProps {
   isCollapsed?: boolean;
@@ -24,13 +24,13 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isCollapsed, isMobile }: SidebarProps) {
-const [providerState, setProviderState] = useContext(XmtpContext) as [
-  any,
-  React.Dispatch<React.SetStateAction<any>>
-];
+  const [providerState, setProviderState] = useContext(XmtpContext) as [
+    any,
+    React.Dispatch<React.SetStateAction<any>>
+  ];
 
   const { convoMessages, client } = providerState;
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
   const { selectedConvo, setSelectedConvo } = useContext(WalletContext);
 
   const sortedConvos = new Map(
@@ -46,17 +46,16 @@ const [providerState, setProviderState] = useContext(XmtpContext) as [
     return (await client?.canMessage(address)) || false;
   };
 
-
   const onInputBlur = async (newAddress: any) => {
-    if (!newAddress.startsWith('0x') || newAddress.length !== 42) {
-      setErrorMsg('Invalid address');
+    if (!newAddress.startsWith("0x") || newAddress.length !== 42) {
+      setErrorMsg("Invalid address");
     } else {
       const isOnNetwork = await checkIfOnNetwork(newAddress);
       if (!isOnNetwork) {
-        setErrorMsg('Address not on XMTP network');
+        setErrorMsg("Address not on XMTP network");
       } else {
         setSelectedConvo(newAddress);
-        setErrorMsg('');
+        setErrorMsg("");
       }
     }
   };
@@ -64,15 +63,15 @@ const [providerState, setProviderState] = useContext(XmtpContext) as [
   return (
     <div
       data-collapsed={isCollapsed}
-      className='relative group flex flex-col h-full gap-4 p-2 data-[collapsed=true]:p-2 '
+      className="relative group flex flex-col h-full gap-4 p-2 data-[collapsed=true]:p-2"
     >
       {!isCollapsed && (
-        <div className='flex flex-col justify-start p-2 items-start space-y-3'>
-          <div className='flex gap-2 items-center text-lg'>
-            <p className='font-medium'>Friends</p>
+        <div className="flex flex-col justify-start p-2 items-start space-y-3">
+          <div className="flex gap-2 items-center text-lg">
+            <p className="font-medium">Friends</p>
           </div>
           <SearchAddress
-            isNewMsg='hi'
+            isNewMsg="hi"
             onInputBlur={onInputBlur}
             errorMsg={errorMsg}
             selectedConvo={selectedConvo}
@@ -80,7 +79,7 @@ const [providerState, setProviderState] = useContext(XmtpContext) as [
         </div>
       )}
 
-      <nav className='grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2'>
+      <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {isCollapsed ? (
           <TooltipProvider>
             <Tooltip delayDuration={0}>
@@ -99,9 +98,9 @@ const [providerState, setProviderState] = useContext(XmtpContext) as [
                 if ((sortedConvos as any).get(address).length > 0) {
                   return (
                     <TooltipContent
-                      key={'Convo_' + address}
-                      side='right'
-                      className='flex items-center gap-4'
+                      key={"Convo_" + address}
+                      side="right"
+                      className="flex items-center gap-4"
                     >
                       {shortAddress(address as string)}
                     </TooltipContent>

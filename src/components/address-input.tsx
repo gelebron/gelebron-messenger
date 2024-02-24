@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { PlusIcon, SearchIcon } from 'lucide-react';
-import { Button } from './ui/button';
-import useStreamConversations from '@/hooks/useStreamConversations';
-import useSendMessage from '@/hooks/useSendMessage';
+import { PlusIcon, SearchIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import useStreamConversations from "@/hooks/useStreamConversations";
+import useSendMessage from "@/hooks/useSendMessage";
 
 interface AddressInputProps {
   onInputBlur: () => void;
@@ -23,29 +23,25 @@ const AddressInput = ({
 
   const call = () => {
     onInputBlur();
-    sendMessage('hi');
+    sendMessage("hi");
   };
 
   return (
-    <div className='flex space-x-3 items-center w-full h-9 overflow-hidden'>
+    <div className="flex space-x-3 items-center w-full h-9 overflow-hidden">
       <input
         value={value}
         onChange={(e) => {
           setNewValue(e.target.value);
         }}
-        type='text'
-        className=' w-full border rounded-lg flex items-center h-9 px-3 resize-none overflow-hidden bg-background'
+        type="text"
+        className=" w-full border rounded-lg flex items-center h-9 px-3 resize-none overflow-hidden bg-background"
         placeholder={placeholder}
       />
-      <Button variant='outline' title='search people by wallet-address'>
-        <SearchIcon className='h-4 w-4' />
+      <Button variant="outline" title="Search people by wallet address">
+        <SearchIcon className="h-4 w-4" />
       </Button>
-      <Button
-        variant='outline'
-        title='Add new people wallet-address'
-        onClick={call}
-      >
-        <PlusIcon className='h-4 w-4' />
+      <Button variant="outline" title="Add new wallet address" onClick={call}>
+        <PlusIcon className="h-4 w-4" />
       </Button>
     </div>
   );

@@ -8,8 +8,8 @@ export default function Home() {
   const defaultLayout = layout ? JSON.parse(layout.value) : undefined;
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center p-4 md:px-24 pb-10 pt-6 md:pb-10 md:pt-10 space-y-8 gap-4 bg-[#F5C8BD]">
-      <div className="flex justify-between w-full items-center">
+    <main className="flex h-screen flex-col p-4 md:px-24 pb-10 pt-6 md:pb-10 md:pt-10 space-y-8 gap-4 bg-[#F5C8BD]">
+      <div className="flex justify-between w-full items-center pb-10">
         <Image
           src="/assets/gelebron-no-bg.png"
           alt="Gelebron Logo"

@@ -1,6 +1,6 @@
-import React from 'react';
-import { getLatestMessage } from '@/lib/utils';
-import ConversationCardIdenticon from './conversation-identicon';
+import React from "react";
+import { getLatestMessage } from "@/lib/utils";
+import ConversationCardIdenticon from "./conversation-identicon";
 
 interface conversationListProps {
   convoMessages: any;
@@ -21,12 +21,12 @@ const ConversationListIdenticon = ({
   );
 
   return (
-    <div className='flex flex-col space-y-4'>
+    <div className="flex flex-col space-y-4">
       {Array.from(sortedConvos.keys()).map((address) => {
         if ((sortedConvos.get(address) as any[]).length > 0) {
           return (
             <ConversationCardIdenticon
-              key={'Convo_' + address}
+              key={"Convo_" + address}
               setSelectedConvo={setSelectedConvo}
               address={address as string} // Cast address to string
               latestMessage={getLatestMessage(sortedConvos.get(address))}

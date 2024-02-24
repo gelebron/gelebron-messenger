@@ -75,7 +75,7 @@ const PaymentCard = ({ msg }: PaymentCardProps) => {
             className="flex flex-col gap-2 p-1 whitespace-pre-wrap items-end"
           >
             <div className="flex gap-3 items-center">
-              <span className="bg-accent p-3 rounded-md max-w-xs">
+              <span className="bg-accent p-3 rounded-md break-all max-w-xs">
                 {msg.content && (
                   <>
                     <Link
