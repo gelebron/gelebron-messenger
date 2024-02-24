@@ -6,7 +6,7 @@ import { InfoIcon, SendHorizontal } from "lucide-react";
 
 const text = (
   <span>
-    How to send Money : <br /> /pay amount cusd
+    How to send cUSD: <br /> /pay [_amount] cusd
   </span>
 );
 interface MessageInputProps {

@@ -34,10 +34,7 @@ const Messages = () => {
     if ("/pay" === msgTxt.substring(0, 4)) {
       sendToken(msgTxt, selectedConvo).then((data) => {
         sendMessage(
-          "Hey, I sent you " +
-            msgTxt.split(" ")[1] +
-            "  " +
-            msgTxt.split(" ")[2]
+          "Hey, I sent you" + msgTxt.split(" ")[1] + "  " + msgTxt.split(" ")[2]
         );
         sendMessage("Transaction :  https://alfajores.celoscan.io/tx/" + data);
         setMsgTxt("");
