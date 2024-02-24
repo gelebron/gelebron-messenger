@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import useStreamMessages from "@/hooks/useStreamMessages";
 import MessageCard from "./message-card";
 import PaymentCard from "./payment-card";
@@ -16,6 +16,14 @@ const MessageList = ({
 }: MessageListProps) => {
   useStreamMessages(selectedConvo);
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (convoMessages.length > 0) {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [convoMessages.length]);
+
   return (
     <div className="">
       <div className="">
@@ -26,6 +34,7 @@ const MessageList = ({
             }
             return <MessageCard key={msg.id} msg={msg} />;
           })}
+        <div ref={ref} />
       </div>
     </div>
   );
