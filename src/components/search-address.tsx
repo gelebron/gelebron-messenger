@@ -27,12 +27,16 @@ const SearchAddress = ({
   const resolveVNS = async (vnsName: string) => {
     try {
       // resolve the VNS name
-      const resolved = await VNS.resolveVNS(vnsName);
-      // update state with resolved address
-      setResolvedAddress(resolved);
+      const response = await VNS.resolveVNS(vnsName);
+      if (response.code === 1) {
+        setResolvedAddress(response.receipt);
+      } else {
+        console.error("Error resolving VNS, reponse:", response);
+        setResolvedAddress(null);
+      }
     } catch (error) {
       console.error("Error resolving VNS:", error);
-      setResolvedAddress(null);
+      setResolvedAddress(null); // Set resolved address to empty string in case of error
     }
   };
 
@@ -60,7 +64,7 @@ const SearchAddress = ({
                 setNewAddress(value);
                 resolveVNS(value); // Resolve VNS when input value changes
               }}
-              placeholder="Type wallet address ..."
+              placeholder="Type Address or VNS"
               value={newAddress}
               onInputBlur={() => onInputBlur(newAddress)}
             />
