@@ -1,4 +1,4 @@
-# Gelebron - Chat & Pay
+# Gelebron Messenger
 
 <div align="center">
 <img 
