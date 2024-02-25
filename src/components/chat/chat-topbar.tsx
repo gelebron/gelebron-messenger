@@ -16,7 +16,7 @@ export default function ChatTopbar({ selectedConvo }: ChatTopbarProps) {
       <div className="flex items-center gap-2">
         <Avatar className="flex justify-center items-center">
           <AvatarImage
-            src={`https://api.multiavatar.com/${walletAddress}.png`}
+            src={`https://api.multiavatar.com/${selectedConvo}.png`}
             alt="image"
             width={6}
             height={6}

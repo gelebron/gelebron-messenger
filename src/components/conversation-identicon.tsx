@@ -11,7 +11,7 @@ interface ConversationCardIdenticonProps {
 const ConversationCardIdenticon = ({
   address,
 }: ConversationCardIdenticonProps) => {
-  const { setSelectedConvo, walletAddress } = useContext(WalletContext);
+  const { setSelectedConvo } = useContext(WalletContext);
   return (
     <div
       onClick={() => setSelectedConvo(address)}
@@ -19,7 +19,7 @@ const ConversationCardIdenticon = ({
     >
       <Avatar className="flex justify-center items-center">
         <AvatarImage
-          src={`https://api.multiavatar.com/${walletAddress}.png`}
+          src={`https://api.multiavatar.com/${address}.png`}
           alt="image"
           width={6}
           height={6}

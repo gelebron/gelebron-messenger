@@ -20,7 +20,7 @@ const ConversationCard = ({
     >
       <Avatar className="flex justify-center items-center">
         <AvatarImage
-          src={`https://api.multiavatar.com/${walletAddress}.png`}
+          src={`https://api.multiavatar.com/${address}.png`}
           alt="image"
           width={6}
           height={6}
