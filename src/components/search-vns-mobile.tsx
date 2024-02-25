@@ -1,27 +1,27 @@
 "use client";
+
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { shortAddress } from "@/lib/utils";
-import AddressInput from "./address-input";
-import { vns } from "@nest25/ens-lib";
+import VnsInput from "./vns-input";
 
-interface SearchAddressProps {
+interface SearchVnsMobileProps {
   isNewMsg: string;
-  onInputBlur: (newAddress: any) => void;
+  onInputBlurVns: (newAddress: any) => void;
   errorMsg: string;
   selectedConvo: string | null;
 }
 
-const SearchAddress = ({
+const SearchVnsMobile = ({
   isNewMsg,
-  onInputBlur,
+  onInputBlurVns,
   errorMsg,
   selectedConvo,
-}: SearchAddressProps) => {
+}: SearchVnsMobileProps) => {
   const [newAddress, setNewAddress] = useState("");
 
   return (
-    <div className="flex ">
+    <div className="flex md:hidden absolute -top-12 right-10 ">
       <motion.div
         key="input"
         className={`w-full relative flex flex-col ${isNewMsg ? "flex-1" : ""}`}
@@ -39,11 +39,11 @@ const SearchAddress = ({
       >
         {isNewMsg ? (
           <>
-            <AddressInput
+            <VnsInput
               setNewValue={setNewAddress}
-              placeholder="Search wallet address ..."
+              placeholder="Search VNS name ..."
               value={newAddress}
-              onInputBlur={() => onInputBlur(newAddress)}
+              onInputBlurVns={() => onInputBlurVns(newAddress)}
             />
             {errorMsg && (
               <span className="text-xs text-[#ff5656] text-start ml-1 mt-2 flex flex-col">
@@ -59,4 +59,4 @@ const SearchAddress = ({
   );
 };
 
-export default SearchAddress;
+export default SearchVnsMobile;

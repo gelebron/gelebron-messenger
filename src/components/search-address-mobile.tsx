@@ -6,7 +6,7 @@ import { shortAddress } from "@/lib/utils";
 
 import AddressInput from "./address-input";
 
-interface ChatBottombarProps {
+interface SearchAddressMobileProps {
   isNewMsg: string;
   onInputBlur: (newAddress: any) => void;
   errorMsg: string;
@@ -18,11 +18,11 @@ const SearchAddressMobile = ({
   onInputBlur,
   errorMsg,
   selectedConvo,
-}: ChatBottombarProps) => {
+}: SearchAddressMobileProps) => {
   const [newAddress, setNewAddress] = useState("");
 
   return (
-    <div className="flex md:hidden absolute -top-16 right-10 ">
+    <div className="flex md:hidden absolute -top-24 right-10 ">
       <motion.div
         key="input"
         className={`w-full relative flex flex-col ${isNewMsg ? "flex-1" : ""}`}
@@ -42,7 +42,7 @@ const SearchAddressMobile = ({
           <>
             <AddressInput
               setNewValue={setNewAddress}
-              placeholder="Type wallet address ..."
+              placeholder="Search wallet address ..."
               value={newAddress}
               onInputBlur={() => onInputBlur(newAddress)}
             />

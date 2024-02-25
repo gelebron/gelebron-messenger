@@ -5,6 +5,8 @@ import { XmtpContext } from "@/providers/XmtpContext";
 import { WalletContext } from "@/providers/WalletContext";
 import SearchAddressMobile from "../search-address-mobile";
 import ChatBottombar from "./chat-bottombar";
+import SearchVnsMobile from "../search-vns-mobile";
+import { vns } from "@nest25/ens-lib";
 
 export function Chat() {
   const [providerState, setProviderState] = useContext(XmtpContext) as [
@@ -34,11 +36,39 @@ export function Chat() {
     }
   };
 
+  const VNS = new vns();
+
+  const onInputBlurVns = async (newVns: any) => {
+    if (newVns.startsWith("0x")) {
+      setErrorMsg("Invalid .vlry name");
+    } else {
+      const receipt = await VNS.resolveVNS(`${newVns}.vlry`);
+      if (receipt.receipt) {
+        const isOnNetwork = await checkIfOnNetwork(receipt.receipt);
+        console.log(receipt.receipt);
+        if (!isOnNetwork) {
+          setErrorMsg(".vlry name does not exist");
+        } else {
+          setSelectedConvo(receipt.receipt);
+          setErrorMsg("");
+        }
+      } else {
+        setErrorMsg("Invalid receipt");
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between w-full h-[100%]">
       <SearchAddressMobile
         isNewMsg="hi"
         onInputBlur={onInputBlur}
+        errorMsg={errorMsg}
+        selectedConvo={selectedConvo}
+      />
+      <SearchVnsMobile
+        isNewMsg="hi"
+        onInputBlurVns={onInputBlurVns}
         errorMsg={errorMsg}
         selectedConvo={selectedConvo}
       />

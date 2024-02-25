@@ -1,21 +1,20 @@
 "use client";
 
-import { MoreHorizontal, SquarePen } from "lucide-react";
-import { cn, getLatestMessage, shortAddress } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { getLatestMessage, shortAddress } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useContext, useState } from "react";
 import { XmtpContext } from "@/providers/XmtpContext";
 import ConversationList from "./conversation-list";
 import { WalletContext } from "@/providers/WalletContext";
 import ConversationListIdenticon from "./conversation-list-identicon";
 import SearchAddress from "./search-address";
+import SearchVns from "./search-vns";
+import { vns } from "@nest25/ens-lib";
 
 interface SidebarProps {
   isCollapsed?: boolean;
@@ -60,6 +59,28 @@ export function Sidebar({ isCollapsed, isMobile }: SidebarProps) {
     }
   };
 
+  const VNS = new vns();
+
+  const onInputBlurVns = async (newVns: any) => {
+    if (newVns.startsWith("0x")) {
+      setErrorMsg("Invalid .vlry name");
+    } else {
+      const receipt = await VNS.resolveVNS(`${newVns}.vlry`);
+      if (receipt.receipt) {
+        const isOnNetwork = await checkIfOnNetwork(receipt.receipt);
+        console.log(receipt.receipt);
+        if (!isOnNetwork) {
+          setErrorMsg(".vlry name does not exist");
+        } else {
+          setSelectedConvo(receipt.receipt);
+          setErrorMsg("");
+        }
+      } else {
+        setErrorMsg("Invalid receipt");
+      }
+    }
+  };
+
   return (
     <div
       data-collapsed={isCollapsed}
@@ -73,6 +94,12 @@ export function Sidebar({ isCollapsed, isMobile }: SidebarProps) {
           <SearchAddress
             isNewMsg="hi"
             onInputBlur={onInputBlur}
+            errorMsg={errorMsg}
+            selectedConvo={selectedConvo}
+          />
+          <SearchVns
+            isNewMsg="hi"
+            onInputBlurVns={onInputBlurVns}
             errorMsg={errorMsg}
             selectedConvo={selectedConvo}
           />

@@ -1,18 +1,19 @@
-"use client"
-import { XmtpContext } from '@/providers/XmtpContext';
-import { useContext } from 'react';
+"use client";
+import { XmtpContext } from "@/providers/XmtpContext";
+import { useContext } from "react";
 
 const useSendMessage = (peerAddress: any) => {
-const [providerState] = useContext(XmtpContext) as [
-  any,
-  React.Dispatch<React.SetStateAction<any>>
-];
+  const [providerState] = useContext(XmtpContext) as [
+    any,
+    React.Dispatch<React.SetStateAction<any>>
+  ];
   const { client } = providerState || {};
 
   const sendMessage = async (message: any) => {
     if (!client || !peerAddress) {
       return;
     }
+    console.log("ADDRESS", peerAddress);
     const conversation = await client.conversations.newConversation(
       peerAddress
     );

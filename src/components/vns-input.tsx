@@ -1,30 +1,44 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { PlusIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import useStreamConversations from "@/hooks/useStreamConversations";
 import useSendMessage from "@/hooks/useSendMessage";
+import { vns } from "@nest25/ens-lib";
 
-interface AddressInputProps {
-  onInputBlur: () => void;
+interface VnsInputProps {
+  onInputBlurVns: () => void;
   value: string;
   setNewValue: (value: string) => void;
   placeholder: string;
 }
 
-const AddressInput = ({
-  onInputBlur,
+const VnsInput = ({
+  onInputBlurVns,
   value,
   setNewValue,
   placeholder,
-}: AddressInputProps) => {
-  const { sendMessage } = useSendMessage(value);
-  useStreamConversations();
+}: VnsInputProps) => {
+  const [vnsAddress, setVnsAddress] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchVnsAddress = async () => {
+      const VNS = new vns();
+      const resolvedAddress = await VNS.resolveVNS(`${value}.vlry`);
+      setVnsAddress(resolvedAddress.receipt);
+    };
+
+    fetchVnsAddress();
+  }, [value]);
+
+  const { sendMessage } = useSendMessage(vnsAddress);
 
   const call = () => {
-    onInputBlur();
+    onInputBlurVns();
     sendMessage("hi");
+    console.log("HELLO", value);
   };
+
+  useStreamConversations();
 
   return (
     <div className="flex space-x-3 items-center w-full h-9 overflow-hidden">
@@ -44,4 +58,4 @@ const AddressInput = ({
   );
 };
 
-export default AddressInput;
+export default VnsInput;
