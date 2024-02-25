@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { vns } from "@nest25/ens-lib"; // Assuming you have a function to resolve ENS names
@@ -23,7 +25,7 @@ const SearchAddress = ({
 
   const handleInputBlur = async () => {
     try {
-      const resolvedAddress = await vns.resolveVNS(inputValue); // Resolve ENS name to address
+      const resolvedAddress = await VNS.resolveVNS(inputValue); // Resolve ENS name to address
       onInputBlur(resolvedAddress);
     } catch (error) {
       console.error("Error resolving ENS:", error);
