@@ -3,17 +3,27 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { Input } from "./ui/input";
 import { vns } from "@nest25/ens-lib";
+import { SyncLoader } from "react-spinners";
 
 const RegisterVNS = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [privateKey, setPrivateKey] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const VNS = new vns();
 
   const handleRegisterVns = async () => {
-    const receipt = await VNS.registerVNS(`${username}.vlry`, privateKey);
-    console.log(receipt);
+    try {
+      setLoading(true);
+      const receipt = await VNS.registerVNS(`${username}.vlry`, privateKey);
+      console.log(receipt);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,7 +56,14 @@ const RegisterVNS = () => {
         onClick={handleRegisterVns}
         className="h-12 px-8 bg-[#fcede9] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-[#2a2a2a] hover:text-[#fcede9] rounded-3xl font-semibolt text-xl gap-2 mt-5"
       >
-        Register VNS
+        {loading ? (
+          <>
+            Registering
+            <SyncLoader size={5} color="#E6E6E6" />
+          </>
+        ) : (
+          "Register VNS"
+        )}
       </Button>
     </div>
   );
