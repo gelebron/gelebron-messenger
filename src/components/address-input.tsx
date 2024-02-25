@@ -34,12 +34,9 @@ const AddressInput = ({
           setNewValue(e.target.value);
         }}
         type="text"
-        className=" w-full border rounded-lg flex items-center h-9 px-3 resize-none overflow-hidden bg-background"
+        className=" w-full border rounded-lg flex items-center h-9 px-3 resize-none overflow-hidden bg-background focus-visible:ring-none focus-visible:outline-none"
         placeholder={placeholder}
       />
-      <Button variant="outline" title="Search people by wallet address">
-        <SearchIcon className="h-4 w-4" />
-      </Button>
       <Button variant="outline" title="Add new wallet address" onClick={call}>
         <PlusIcon className="h-4 w-4" />
       </Button>

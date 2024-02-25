@@ -1,9 +1,9 @@
-'use client';
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import { shortAddress } from '@/lib/utils';
-
-import AddressInput from './address-input';
+"use client";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { shortAddress } from "@/lib/utils";
+import AddressInput from "./address-input";
+import { vns } from "@nest25/ens-lib";
 
 interface ChatBottombarProps {
   isNewMsg: string;
@@ -18,13 +18,13 @@ const SearchAddress = ({
   errorMsg,
   selectedConvo,
 }: ChatBottombarProps) => {
-  const [newAddress, setNewAddress] = useState('');
+  const [newAddress, setNewAddress] = useState("");
 
   return (
-    <div className='flex '>
+    <div className="flex ">
       <motion.div
-        key='input'
-        className={`w-full relative flex flex-col ${isNewMsg ? 'flex-1' : ''}`}
+        key="input"
+        className={`w-full relative flex flex-col ${isNewMsg ? "flex-1" : ""}`}
         layout
         initial={{ opacity: 0, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -32,7 +32,7 @@ const SearchAddress = ({
         transition={{
           opacity: { duration: 0.05 },
           layout: {
-            type: 'spring',
+            type: "spring",
             bounce: 0.15,
           },
         }}
@@ -41,12 +41,12 @@ const SearchAddress = ({
           <>
             <AddressInput
               setNewValue={setNewAddress}
-              placeholder='Type wallet address ...'
+              placeholder="Type wallet address ..."
               value={newAddress}
               onInputBlur={() => onInputBlur(newAddress)}
             />
             {errorMsg && (
-              <span className='text-xs text-[#ff5656] text-start ml-1 mt-2 flex flex-col'>
+              <span className="text-xs text-[#ff5656] text-start ml-1 mt-2 flex flex-col">
                 {errorMsg}
               </span>
             )}
