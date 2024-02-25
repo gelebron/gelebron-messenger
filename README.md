@@ -62,7 +62,8 @@ $ npm run dev
 ## Demo
 
 Deployed dApp: [Gelebron Messenger](https://gelebron-messenger.vercel.app/) <br/>
-Demo Walkthrough: [Loom Video](https://www.loom.com/share/3f0553a541a24bf09b6167dc01357650?sid=f240ca2e-25a2-4957-90c2-62ff61ee6f8a)
+Demo Walkthrough: [Loom Video](https://www.loom.com/share/3f0553a541a24bf09b6167dc01357650?sid=f240ca2e-25a2-4957-90c2-62ff61ee6f8a) <br/>
+Simple Guide: [Scribe Guide](https://scribehow.com/shared/Interact_with_VNS_and_Messenger_using_MetaMask_on_localhost__DUUYue7USwe1whIVrgKNpA)
 
 ## Team
 
