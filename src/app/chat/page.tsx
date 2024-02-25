@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { ChatLayout } from "@/components/chat/chat-layout";
 import ConnectWallet from "@/components/connect-wallet";
 import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
   const layout = cookies().get("react-resizable-panels:layout");
@@ -10,12 +11,14 @@ const page = () => {
   return (
     <main className="flex h-screen flex-col p-4 md:px-24 pb-10 pt-6 md:pb-10 md:pt-10 space-y-8 gap-4 bg-[#F5C8BD]">
       <div className="flex justify-between w-full items-center pb-10">
-        <Image
-          src="/assets/gelebron-no-bg.png"
-          alt="Gelebron Logo"
-          width={200}
-          height={200}
-        />
+        <Link href="/">
+          <Image
+            src="/assets/gelebron-no-bg.png"
+            alt="Gelebron Logo"
+            width={200}
+            height={200}
+          />
+        </Link>
         <ConnectWallet />
       </div>
 
