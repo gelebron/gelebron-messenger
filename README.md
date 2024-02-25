@@ -60,7 +60,7 @@ $ npm run dev
 - Currency symbol: XETA
 
 ## Demo
-Demo Site: https://gelebron-messenger.vercel.app/
+Demo Site: https://gelebron-messenger.vercel.app/ <br/>
 Walkthrough: https://www.youtube.com/insertlinkhere
 
 ## Team
