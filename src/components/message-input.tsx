@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { InfoIcon, SendHorizontal } from "lucide-react";
 
 const text = (
-  <span>
-    How to send cUSD: <br /> /pay [_amount] cusd
+  <span className="flex items-center justify-start text-sm">
+    To send cUSD, enter this command: <br /> /pay [amount] cusd
   </span>
 );
 interface MessageInputProps {

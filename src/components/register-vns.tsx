@@ -10,6 +10,7 @@ const RegisterVNS = () => {
   const [username, setUsername] = useState("");
   const [privateKey, setPrivateKey] = useState("");
   const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState(null);
 
   const VNS = new vns();
 
@@ -18,6 +19,7 @@ const RegisterVNS = () => {
       setLoading(true);
       const receipt = await VNS.registerVNS(`${username}.vlry`, privateKey);
       console.log(receipt);
+      setCode(receipt.code);
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -65,6 +67,17 @@ const RegisterVNS = () => {
           "Register VNS"
         )}
       </Button>
+      {code !== null ? (
+        code === 0 ? (
+          <p className="font-semibold mt-5">
+            😵 VNS registration was unsuccessful 😵
+          </p>
+        ) : (
+          <p className="font-semibold mt-5">
+            🚀 VNS registration was successful 🚀
+          </p>
+        )
+      ) : null}
     </div>
   );
 };
