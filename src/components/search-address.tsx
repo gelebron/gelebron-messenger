@@ -12,6 +12,9 @@ interface ChatBottombarProps {
   selectedConvo: string | null;
 }
 
+// create a new instance of the VNS class
+const VNS = new vns();
+
 const SearchAddress = ({
   isNewMsg,
   onInputBlur,
@@ -19,6 +22,19 @@ const SearchAddress = ({
   selectedConvo,
 }: ChatBottombarProps) => {
   const [newAddress, setNewAddress] = useState("");
+  const [resolvedAddress, setResolvedAddress] = useState<string | null>(null);
+
+  const resolveVNS = async (vnsName: string) => {
+    try {
+      // resolve the VNS name
+      const resolved = await VNS.resolveVNS(vnsName);
+      // update state with resolved address
+      setResolvedAddress(resolved);
+    } catch (error) {
+      console.error("Error resolving VNS:", error);
+      setResolvedAddress(null);
+    }
+  };
 
   return (
     <div className="flex ">
@@ -40,11 +56,19 @@ const SearchAddress = ({
         {isNewMsg ? (
           <>
             <AddressInput
-              setNewValue={setNewAddress}
+              setNewValue={(value: string) => {
+                setNewAddress(value);
+                resolveVNS(value); // Resolve VNS when input value changes
+              }}
               placeholder="Type wallet address ..."
               value={newAddress}
               onInputBlur={() => onInputBlur(newAddress)}
             />
+            {resolvedAddress && (
+              <span className="text-xs text-[#4CAF50] text-start ml-1 mt-2 flex flex-col">
+                Resolved address: {resolvedAddress}
+              </span>
+            )}
             {errorMsg && (
               <span className="text-xs text-[#ff5656] text-start ml-1 mt-2 flex flex-col">
                 {errorMsg}
