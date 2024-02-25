@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <Background>
       <div className="w-screen h-screen overflow-scroll pb-12">
-        <div className="py-14 px-5">
+        <div className="py-12 px-5">
           <Link href="/" className="flex items-center justify-center">
             <Image
               src="/assets/gelebron-no-bg.png"
@@ -31,7 +31,7 @@ export default function Home() {
             <div className="block md:hidden"></div>
           </div>
         </div>
-        <div className="flex-col items-center justify-center w-full mt-4">
+        <div className="flex-col items-center justify-center w-full">
           <div className="flex flex-col items-center text-center">
             <p className="mt-5 text-4xl font-bold leading-tight text-[#000000] sm:leading-tight sm:text-4xl lg:text-5xl lg:leading-tight font-pj">
               Encrypted Instant
@@ -50,18 +50,18 @@ export default function Home() {
               ⛓️ Chat and Send cUSD to anyone on Celo using Gelebron Messenger
               ⛓️
             </p>
-            <div className="mt-9"></div>
-            <Button
-              id="register-vns"
-              onClick={() => router.push("/chat")}
-              className="h-12 px-8 bg-[#fcede9] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-[#2a2a2a] hover:text-[#fcede9] rounded-3xl font-semibolt text-xl gap-2 mt-5"
-            >
-              Launch Messenger
-              <MessageSquareText className="w-5 h-5" />
-            </Button>
+            <div className="mt-16"></div>
+            <RegisterVNS />
             <div className="mt-16"></div>
             <div className="flex-col justify-center">
-              <RegisterVNS />
+              <Button
+                id="register-vns"
+                onClick={() => router.push("/chat")}
+                className="h-12 px-8 bg-[#fcede9] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-[#2a2a2a] hover:text-[#fcede9] rounded-3xl font-semibolt text-xl gap-2 mt-3"
+              >
+                Launch Messenger
+                <MessageSquareText className="w-5 h-5" />
+              </Button>
             </div>
           </div>
           <div className="flex items-center justify-center align-center gap-5 mt-16">
