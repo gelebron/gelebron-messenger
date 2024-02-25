@@ -18,10 +18,12 @@ const SearchAddress = ({
   selectedConvo,
 }: SearchAddressProps) => {
   const [inputValue, setInputValue] = useState("");
+  const { vns } = require("@nest25/ens-lib");
+  const VNS = new vns();
 
   const handleInputBlur = async () => {
     try {
-      const resolvedAddress = await inputValue; // Resolve ENS name to address
+      const resolvedAddress = await vns.resolveVNS(inputValue); // Resolve ENS name to address
       onInputBlur(resolvedAddress);
     } catch (error) {
       console.error("Error resolving ENS:", error);
@@ -50,7 +52,7 @@ const SearchAddress = ({
           <>
             <AddressInput
               setNewValue={setInputValue}
-              placeholder="Type ENS name ..." // Update placeholder text
+              placeholder="Input Addres or ENS name..." // Update placeholder text
               value={inputValue}
               onInputBlur={handleInputBlur}
             />
