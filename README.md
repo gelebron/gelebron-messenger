@@ -35,6 +35,18 @@ To start the project, run the command:
 ```bash
 $ npm run dev
 ```
+### 1. Get cUSD from CELO Alfajores Testnet
+- Network Name: Alfajores Testnet
+- New RPC URL: https://alfajores-forno.celo-testnet.org
+- Chain ID: 44787
+- Currency symbol: A-CELO
+- Get cUSD and A-CELO from Faucet: https://faucet.celo.org/alfajores
+
+### 2. Get XETA testnet tokens for VNS service
+- Network Name: Volary Testnet
+- New RPC URL: https://nestrpc.sandbox.volary.tech/
+- Chain ID: 8888
+- Currency symbol: XETA
 
 ## Demo
 Walkthrough: https://www.youtube.com/insertlinkhere
