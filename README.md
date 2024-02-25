@@ -17,7 +17,7 @@
 
 ## Project Summary
 
-Encrypted instant messaging & payments protocol powered by decentralized identities using XMTP and NES.TECH. Gelebron is a decentralized messaging application leveraging blockchain technology to provide secure and seamless communication between users. The platform integrates the Volary Naming Service (VNS) for registering unique names and resolving valid VNS addresses, making it easy for users to identify and connect with each other.
+**Encrypted instant messaging & payments protocol** powered by **decentralized identities** using [XMTP](https://xmtp.org/), [Celo](https://celo.org/), Volary Name Service (VNS) and [NES.TECH SDK](https://nes.tech/). Gelebron is a decentralized messaging application leveraging blockchain technology to provide secure and seamless communication between users. The platform integrates the Volary Name Service (VNS) for registering unique names and resolving valid VNS addresses, making it easy for users to identify and connect with each other.
 
 ### XMTP
 
