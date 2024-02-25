@@ -60,8 +60,9 @@ $ npm run dev
 - Currency symbol: XETA
 
 ## Demo
-Demo Site: https://gelebron-messenger.vercel.app/ <br/>
-Walkthrough: https://www.youtube.com/insertlinkhere
+
+Deployed dApp: [Gelebron Messenger](https://gelebron-messenger.vercel.app/) <br/>
+Demo Walkthrough: [Loom Video](https://www.loom.com/share/3f0553a541a24bf09b6167dc01357650?sid=f240ca2e-25a2-4957-90c2-62ff61ee6f8a)
 
 ## Team
 
